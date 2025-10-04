@@ -1,29 +1,21 @@
 
 package projeto_batalha_senhordosaneis;
 
-public class Guerreiro {
-    protected String nome;
-    protected int idade;
-    protected double peso;
+public abstract class Guerreiro {
+    private String nome;
+    private int idade;
+    private double peso;
     protected int energia;
-    protected boolean montaria;  
-    protected int ataque;
 
     public Guerreiro(String nome, int idade, double peso) {
         this.nome = nome;
         this.idade = idade;
         this.peso = peso;
-//        this.montaria = montaria;
         this.energia = 100;
-        this.ataque = 100;
     }
 
     public String getNome() {
         return nome;
-    }
-
-    public int getAtaque() {
-        return ataque;
     }
     
     public void setNome(String nome) {
@@ -50,6 +42,20 @@ public class Guerreiro {
         return energia;
     }
     
+    //atacar é abstrato
+    //sofrer dano abstrato
+    
+    public void exibirInfo() {
+    System.out.println(
+        "| Nome: " + nome +
+        ", Idade: " + idade +
+        ", Peso: " + peso +
+        ", Energia: " + energia +
+        ", Ataque: " + "\n-------------------------------------------------------------------------------------"
+    );
+}
+
+
     
     
 }

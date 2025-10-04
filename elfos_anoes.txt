@@ -1,0 +1,10 @@
+1 Elrandir 350 75,5 true
+2 Thalion 220 68,3 true
+3 Durin 410 120,7 true
+4 Grommok 290 140,2 true
+5 Borak 180 95,6 true
+6 Thrain 500 110,9 true
+2 Legorim 260 72,4 true
+1 Faelorn 300 77,8 true
+4 Brakthul 330 160,0 true
+5 Zogar 210 102,3 true

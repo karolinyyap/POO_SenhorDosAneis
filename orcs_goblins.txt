@@ -1,0 +1,11 @@
+3 Lurtz 75 98,4 true
+1 Gruk 54 82,7 false
+6 Morzul 110 115,9 false
+4 Zograt 89 93,2 true
+5 Wargash 60 111,5 true
+4 Kragnar 95 104,8 true
+1 Drogul 70 88,6 false
+2 Snaga 45 77,3 false
+6 Zalthor 120 118,2 false
+5 Ulfang 52 109,4 true
+
