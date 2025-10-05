@@ -7,5 +7,15 @@ public class PorcoGuerra_Anao extends Anao {
         super(nome, idade, peso);
         this.energia = 250;
     }
+
+    @Override
+    public int atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int receberDano() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

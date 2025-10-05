@@ -5,6 +5,25 @@ public class SenhorDasFeras_Orc extends Orc{
     
     public SenhorDasFeras_Orc(String nome, int idade, double peso) {
         super(nome, idade, peso);
+        this.energia = 400;
+    }
+
+    @Override
+    public int atacar() {
+        int ataque = 50;
+        
+        //quando mata um inimigo, cria um warg
+        
+        return ataque;
+    }
+
+    @Override
+    public void receberDano(int dano) {
+        this.energia -= dano;
+        
+        if (dano >= energia){
+            //morreu
+        }
     }
     
 }

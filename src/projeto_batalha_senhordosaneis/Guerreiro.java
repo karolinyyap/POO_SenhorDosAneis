@@ -42,8 +42,9 @@ public abstract class Guerreiro {
         return energia;
     }
     
-    //atacar é abstrato
-    //sofrer dano abstrato
+    public abstract int atacar();
+    
+    public abstract void receberDano(int dano);
     
     public void exibirInfo() {
     System.out.println(

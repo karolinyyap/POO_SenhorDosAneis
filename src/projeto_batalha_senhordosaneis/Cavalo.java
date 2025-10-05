@@ -1,16 +1,15 @@
 
-package projeto_batalha_senhordosaneis.goblins;
+package projeto_batalha_senhordosaneis;
 
-public class Comum_Goblin extends Goblin{
+public class Cavalo extends Guerreiro{
 
-    public Comum_Goblin(String nome, int idade, double peso) {
+    public Cavalo(String nome, int idade, double peso) {
         super(nome, idade, peso);
-        this.energia = 50;
     }
 
     @Override
     public int atacar() {
-        int ataque = 10;
+        int ataque = 0;
         
         return ataque;
     }
@@ -19,11 +18,11 @@ public class Comum_Goblin extends Goblin{
     public void receberDano(int dano) {
         this.energia -= dano;
         
-        if (dano >= energia){
+        if (energia <= 0){
             //morreu
-        }    
+        }
     }
-    
+
     
     
 }
