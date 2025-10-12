@@ -2,16 +2,16 @@
 package projeto_batalha_senhordosaneis.orcs;
 
 
-public class Soldado_Orc extends Orc implements Montado {
-    private final Warg_Orc warg; 
+public class SoldadoOrc extends Orc implements Montado {
+    private final WargOrc warg; 
 
-    public Soldado_Orc(String nome, int idade, double peso, Warg_Orc warg) {
+    public SoldadoOrc(String nome, int idade, double peso, WargOrc warg) {
         super(nome, idade, peso);
         this.warg = warg;
     }
 
     @Override
-    public Warg_Orc getMontaria(){
+    public WargOrc getMontaria(){
         return this.warg;
     }
 

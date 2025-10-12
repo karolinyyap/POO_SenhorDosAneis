@@ -1,18 +1,19 @@
 
 package projeto_batalha_senhordosaneis.orcs;
 
-public class SenhorDasFeras_Orc extends Orc{
+public class WargOrc extends Orc{
     
-    public SenhorDasFeras_Orc(String nome, int idade, double peso) {
+    public WargOrc(String nome, int idade, double peso) {
         super(nome, idade, peso);
-        this.energia = 400;
     }
 
     @Override
     public int atacar() {
-        int ataque = 50;
+        int ataque = 15;
         
-        //quando mata um inimigo, cria um warg
+//        if (){
+//            wargs em fileira
+//        }
         
         return ataque;
     }

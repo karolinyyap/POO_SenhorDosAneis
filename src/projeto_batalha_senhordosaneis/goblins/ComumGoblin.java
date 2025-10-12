@@ -1,19 +1,16 @@
 
-package projeto_batalha_senhordosaneis.orcs;
+package projeto_batalha_senhordosaneis.goblins;
 
-public class Warg_Orc extends Orc{
-    
-    public Warg_Orc(String nome, int idade, double peso) {
+public class ComumGoblin extends Goblin{
+
+    public ComumGoblin(String nome, int idade, double peso) {
         super(nome, idade, peso);
+        this.energia = 50;
     }
 
     @Override
     public int atacar() {
-        int ataque = 15;
-        
-//        if (){
-//            wargs em fileira
-//        }
+        int ataque = 10;
         
         return ataque;
     }
@@ -24,7 +21,9 @@ public class Warg_Orc extends Orc{
         
         if (dano >= energia){
             //morreu
-        }
+        }    
     }
+    
+    
     
 }

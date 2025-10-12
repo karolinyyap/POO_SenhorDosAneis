@@ -1,16 +1,16 @@
 
 package projeto_batalha_senhordosaneis.goblins;
 
-public class Comum_Goblin extends Goblin{
-
-    public Comum_Goblin(String nome, int idade, double peso) {
+public class ReiGoblin extends Goblin{
+    
+    public ReiGoblin(String nome, int idade, double peso) {
         super(nome, idade, peso);
-        this.energia = 50;
+        this.energia = 300;
     }
 
     @Override
     public int atacar() {
-        int ataque = 10;
+        int ataque = 100;
         
         return ataque;
     }
@@ -21,9 +21,8 @@ public class Comum_Goblin extends Goblin{
         
         if (dano >= energia){
             //morreu
+            //ressucitar goblins mortos
         }    
     }
-    
-    
     
 }

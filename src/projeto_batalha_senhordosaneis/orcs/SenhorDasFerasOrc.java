@@ -1,16 +1,18 @@
 
-package projeto_batalha_senhordosaneis.goblins;
+package projeto_batalha_senhordosaneis.orcs;
 
-public class Rei_Goblin extends Goblin{
+public class SenhorDasFerasOrc extends Orc{
     
-    public Rei_Goblin(String nome, int idade, double peso) {
+    public SenhorDasFerasOrc(String nome, int idade, double peso) {
         super(nome, idade, peso);
-        this.energia = 300;
+        this.energia = 400;
     }
 
     @Override
     public int atacar() {
-        int ataque = 100;
+        int ataque = 50;
+        
+        //quando mata um inimigo, cria um warg
         
         return ataque;
     }
@@ -21,8 +23,7 @@ public class Rei_Goblin extends Goblin{
         
         if (dano >= energia){
             //morreu
-            //ressucitar goblins mortos
-        }    
+        }
     }
     
 }
