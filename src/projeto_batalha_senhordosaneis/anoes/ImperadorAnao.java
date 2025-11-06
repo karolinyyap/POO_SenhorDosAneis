@@ -1,33 +1,72 @@
-
 package projeto_batalha_senhordosaneis.anoes;
 
-public class ImperadorAnao extends Anao implements Montado{
-    private final PorcoGuerraAnao porco;
-    
+import java.util.LinkedList;
+import projeto_batalha_senhordosaneis.Guerreiro;
+import projeto_batalha_senhordosaneis.Montado;
+
+public class ImperadorAnao extends Anao implements Montado {
+    //Montaria
+    private PorcoGuerraAnao porco;
+    private static boolean imperadorExiste = false;
+    //pertence à classe ImperadorAnao e não a um objeto específico
+
     public ImperadorAnao(String nome, int idade, double peso, PorcoGuerraAnao porco) {
         super(nome, idade, peso);
+
+        //Verifica se o imperador já existe na lista
+        if (imperadorExiste) {
+            throw new IllegalArgumentException("Erro: só pode existir um Imperador na batalha!");
+        }
+
+        this.imperadorExiste = true;
         this.energia = 250;
         this.porco = porco;
     }
-    
+
+    //Montaria
     @Override
-    public PorcoGuerraAnao getMontaria(){
+    public Guerreiro getMontaria() {
         return this.porco;
     }
 
+    //getAtaque
     @Override
-    public int atacar() {
-        int ataque = 0;
-        
-        return ataque;
+    public int getAtaque() {
+        return 50;
     }
 
+    //Método atacar
     @Override
-    public void receberDano(int dano) {
-        this.energia -= dano;
-        if (energia <= 0){
-            //morreu
+    public void atacar(LinkedList<Guerreiro> lado1, LinkedList<Guerreiro> lado2, boolean primeiroAtaque) {
+        int ataque = this.getAtaque();
+
+        //Ataque primeiro, tonteia o inimigo
+        if (primeiroAtaque) {
+            lado1.getFirst().receberDano(ataque, lado1, lado2);
+            lado1.getFirst().setTonto(true);
+        } else {
+            //Se não só faz seu ataque normal
+            lado1.getFirst().receberDano(ataque, lado1, lado2);
+        }
+
+        if (lado1.getFirst().getEnergia() <= 0) {
+            System.out.println(lado1.getFirst().getNome() + " foi derrotado pelo Imperador " + this.getNome() + "!");
+            lado1.removeFirst();
         }
     }
-    
+
+        //Método receber dano
+    @Override
+    public void receberDano(int dano, LinkedList<Guerreiro> lado1, LinkedList<Guerreiro> lado2) {
+        this.energia -= dano;
+        
+        //Libera a montaria quando esse morre
+        if (this.energia <= 0 && this.porco != null) {
+            System.out.println(this.getNome() + " morreu! Montaria " + porco.getNome() + " liberada.");
+            lado1.addLast(this.porco);
+            this.porco = null;
+        }
+
+    }
+
 }

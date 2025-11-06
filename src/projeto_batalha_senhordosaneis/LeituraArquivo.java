@@ -12,14 +12,43 @@ import projeto_batalha_senhordosaneis.goblins.*;
 import projeto_batalha_senhordosaneis.orcs.*;
 
 public class LeituraArquivo {
-
     
+    //É estático porque ele pertence à classe, e não a um objeto dela, fica
+    //mais fácil de acessar
     public static LinkedList<Guerreiro> orcs_goblinsList = new LinkedList<>();
     public static LinkedList<Guerreiro> elfos_anoesList = new LinkedList<>();
+    
+    //Método para somar os pesos
+    public static double somarPeso(LinkedList<Guerreiro> lista) {
+        double total = 0;
+        for (Guerreiro guerreiro : lista) {
+            total += guerreiro.getPeso();
+        }
+        return total;
+    }
+    
+    //Método para achar o mais velho
+    public static Guerreiro GuerreiroMaisVelho(LinkedList<Guerreiro> lista1, LinkedList<Guerreiro> lista2) {
+        Guerreiro maisVelho = null;
 
+        for (Guerreiro guerreiro : lista1) {
+            if (maisVelho == null || guerreiro.getIdade() > maisVelho.getIdade()) {
+                maisVelho = guerreiro;
+            }
+        }
+
+        for (Guerreiro guerreiro : lista2) {
+            if (maisVelho == null || guerreiro.getIdade() > maisVelho.getIdade()) {
+                maisVelho = guerreiro;
+            }
+        }
+
+        return maisVelho;
+}
+
+    
     public static LinkedList<Guerreiro> lerGoblinsOrcs() {
-        int contadorReiGoblin = 0;
-
+        orcs_goblinsList.clear();
         try {
             FileInputStream arquivoOrcsGoblins = new FileInputStream(
                 "C:\\Users\\Karoliny\\Documents\\NetBeansProjects\\Projeto_Batalha_SenhorDosAneis\\orcs_goblins.txt");
@@ -37,29 +66,34 @@ public class LeituraArquivo {
                         orcs_goblinsList.add(goblin);
                     }
                     case 2 -> {
-                        if (contadorReiGoblin == 1) {
-                            System.out.println("Já existe um Rei Goblin!");
-                        } else {
-                            ReiGoblin rei = new ReiGoblin(nome, idade, peso);
-                            orcs_goblinsList.add(rei);
-                            contadorReiGoblin++;
-                        }
+                        ReiGoblin rei = new ReiGoblin(nome, idade, peso);
+                        orcs_goblinsList.add(rei);
                     }
                     case 3 -> {
-                        String montaria = scan.next();
-                        if (montaria.equals("Sim")) {
-                            WargOrc wargSoldado = new WargOrc(nome, idade, peso);
-                            SoldadoOrc soldado = new SoldadoOrc(nome, idade, peso, wargSoldado);
-                            orcs_goblinsList.add(soldado);
-                        } else {
-                            SoldadoOrc soldado = new SoldadoOrc(nome, idade, peso, null);
-                            orcs_goblinsList.add(soldado);
-                        }
-                             
+                        if(scan.hasNext()) {
+                            String montaria = scan.next();
+                            if (montaria.equalsIgnoreCase("Sim")) {
+                                WargOrc wargSoldado = new WargOrc(nome + " montaria", idade, peso);
+                                SoldadoOrc soldado = new SoldadoOrc(nome, idade, peso, wargSoldado);
+                                orcs_goblinsList.add(soldado);
+                            } else {
+                                SoldadoOrc soldado = new SoldadoOrc(nome, idade, peso, null);
+                                orcs_goblinsList.add(soldado);
+                            }
+                        }  
                     }
                     case 4 -> {
-                        AcougueiroOrc acougueiro = new AcougueiroOrc(nome, idade, peso);
-                        orcs_goblinsList.add(acougueiro);
+                        if(scan.hasNext()) {
+                            String montaria = scan.next();
+                            if (montaria.equalsIgnoreCase("Sim")) {
+                                WargOrc wargSoldado = new WargOrc(nome, idade, peso);
+                                AcougueiroOrc acougueiro = new AcougueiroOrc(nome, idade, peso, wargSoldado);
+                                orcs_goblinsList.add(acougueiro);
+                            } else {
+                                AcougueiroOrc acougueiro = new AcougueiroOrc(nome, idade, peso, null);
+                                orcs_goblinsList.add(acougueiro);
+                            }
+                            }
                     }
                     case 5 -> {
                         WargOrc warg = new WargOrc(nome, idade, peso);
@@ -80,8 +114,7 @@ public class LeituraArquivo {
     }
 
     public static LinkedList<Guerreiro> lerElfosAnoes() {
-        int contadorImperadorAnao = 0;
-
+        elfos_anoesList.clear();
         try {
             FileInputStream arquivoElfosAnoes = new FileInputStream(
                 "C:\\Users\\Karoliny\\Documents\\NetBeansProjects\\Projeto_Batalha_SenhorDosAneis\\elfos_anoes.txt");
@@ -95,48 +128,55 @@ public class LeituraArquivo {
 
                 switch (tipo_guerreiro) {
                     case 1 -> {
-                        String montaria = scan.next();
-                        if (montaria.equals("Sim")) {
-                            Cavalo cavalo = new Cavalo(nome, idade, peso);
-                            //CONFIRMAR COM PROF SE POSSO FAZER ISSO DE PASSAR A MONTARIA ASSIM
-                            GuardiaoElfo guardiao = new GuardiaoElfo(nome, idade, peso, cavalo);
-                            elfos_anoesList.add(guardiao);
-                        } else {
-                            GuardiaoElfo guardiao = new GuardiaoElfo(nome, idade, peso, null);
-                            elfos_anoesList.add(guardiao);
+                        if(scan.hasNext()) {
+                            String montaria = scan.next();
+                            if (montaria.equalsIgnoreCase("Sim")) {
+                                Cavalo cavalo = new Cavalo(nome, idade, peso);
+                                GuardiaoElfo guardiao = new GuardiaoElfo(nome, idade, peso, cavalo);
+                                elfos_anoesList.add(guardiao);
+                            } else {
+                                GuardiaoElfo guardiao = new GuardiaoElfo(nome, idade, peso, null);
+                                elfos_anoesList.add(guardiao);
+                            }
                         }
                     }
                     case 2 -> {
-                        String montaria = scan.next();
-                        if (montaria.equals("Sim")) {
-                            Cavalo cavalo = new Cavalo(nome, idade, peso);
-                            ArqueiroElfo arqueiro = new ArqueiroElfo(nome, idade, peso, cavalo);
-                            elfos_anoesList.add(arqueiro);
-                        } else {
-                            ArqueiroElfo arqueiro = new ArqueiroElfo(nome, idade, peso, null);
-                            elfos_anoesList.add(arqueiro);
+                        if(scan.hasNext()) {
+                            String montaria = scan.next();
+                            if (montaria.equalsIgnoreCase("Sim")) {
+                                Cavalo cavalo = new Cavalo(nome, idade, peso);
+                                ArqueiroElfo arqueiro = new ArqueiroElfo(nome, idade, peso, cavalo);
+                                elfos_anoesList.add(arqueiro);
+                            } else {
+                                ArqueiroElfo arqueiro = new ArqueiroElfo(nome, idade, peso, null);
+                                elfos_anoesList.add(arqueiro);
+                            }
                         }
                     }
                     case 3 -> {
-                        String montaria = scan.next();
-                        if (montaria.equals("Sim")) {
-                            Cavalo cavalo = new Cavalo(nome, idade, peso);
-                            SuperiorElfo superior = new SuperiorElfo(nome, idade, peso, cavalo);
-                            elfos_anoesList.add(superior);
-                        } else {
-                            SuperiorElfo superior = new SuperiorElfo(nome, idade, peso, null);
-                            elfos_anoesList.add(superior);
+                        if(scan.hasNext()) {
+                            String montaria = scan.next();
+                            if (montaria.equalsIgnoreCase("Sim")) {
+                                Cavalo cavalo = new Cavalo(nome, idade, peso);
+                                SuperiorElfo superior = new SuperiorElfo(nome, idade, peso, cavalo);
+                                elfos_anoesList.add(superior);
+                            } else {
+                                SuperiorElfo superior = new SuperiorElfo(nome, idade, peso, null);
+                                elfos_anoesList.add(superior);
+                            }
                         }
                     }
                     case 4 -> {
-                        String montaria = scan.next();
-                        if (montaria.equals("Sim")) {
-                            PorcoGuerraAnao porcoAnao = new PorcoGuerraAnao(nome, idade, peso);
-                            GlutaoAnao glutao = new GlutaoAnao(nome, idade, peso, porcoAnao);
-                            elfos_anoesList.add(glutao);
-                        } else {
-                            GlutaoAnao glutao = new GlutaoAnao(nome, idade, peso, null);
-                            elfos_anoesList.add(glutao);
+                        if(scan.hasNext()) {
+                            String montaria = scan.next();
+                            if (montaria.equalsIgnoreCase("Sim")) {
+                                PorcoGuerraAnao porcoAnao = new PorcoGuerraAnao(nome, idade, peso);
+                                GlutaoAnao glutao = new GlutaoAnao(nome, idade, peso, porcoAnao);
+                                elfos_anoesList.add(glutao);
+                            } else {
+                                GlutaoAnao glutao = new GlutaoAnao(nome, idade, peso, null);
+                                elfos_anoesList.add(glutao);
+                            }
                         }
                     }
                     case 5 -> {
@@ -144,19 +184,15 @@ public class LeituraArquivo {
                         elfos_anoesList.add(porco);
                     }
                     case 6 -> {
-                        if (contadorImperadorAnao == 1) {
-                            System.out.println("Já existe um Imperador Anão!");
-                        } else {
-                            String montaria = scan.next();
-                            if (montaria.equals("Sim")) {
-                                PorcoGuerraAnao porcoAnao = new PorcoGuerraAnao(nome, idade, peso);
-                                ImperadorAnao imperador = new ImperadorAnao(nome, idade, peso, porcoAnao);
-                                elfos_anoesList.add(imperador);
-                                contadorImperadorAnao++;
-                            } else {
-                                ImperadorAnao imperador = new ImperadorAnao(nome, idade, peso, null);
-                                elfos_anoesList.add(imperador);
-                                contadorImperadorAnao++;
+                        if(scan.hasNext()) {
+                           String montaria = scan.next();
+                           if (montaria.equalsIgnoreCase("Sim")) {
+                               PorcoGuerraAnao porcoAnao = new PorcoGuerraAnao(nome, idade, peso);
+                               ImperadorAnao imperador = new ImperadorAnao(nome, idade, peso, porcoAnao);
+                               elfos_anoesList.add(imperador);
+                           } else {
+                               ImperadorAnao imperador = new ImperadorAnao(nome, idade, peso, null);
+                               elfos_anoesList.add(imperador);
                             }
                         }
                     }

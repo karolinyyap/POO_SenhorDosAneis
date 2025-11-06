@@ -1,10 +1,16 @@
-1 Elrandir 350 75,5
-2 Thalion 220 68,3
-3 Durin 410 120,7
-4 Grommok 290 140,2
-5 Borak 180 95,6
-6 Thrain 500 110,9
-2 Legorim 260 72,4
-1 Faelorn 300 77,8
-4 Brakthul 330 160,0
-5 Zogar 210 102,3
+1 Tark 60 50 Sim
+1 Lan 40 30 Não
+2 Elarion 120 65 Sim
+3 Faenor 200 80 Não
+4 Thrain 100 150 Sim
+5 Porko 50 250
+1 Miriel 90 55 Sim
+2 Lethor 130 60 Não
+3 Eldor 220 85 Não
+4 Gimli 160 180 Não
+5 Snort 60 260
+6 Durin 250 200 Sim
+1 Calen 70 45 Não
+4 Borin 140 170 Sim
+5 Oink 75 255 
+

@@ -1,6 +1,0 @@
-
-package projeto_batalha_senhordosaneis.anoes;
-
-public interface Montado {
-    public PorcoGuerraAnao getMontaria();
-}
