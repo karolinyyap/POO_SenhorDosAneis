@@ -45,7 +45,6 @@ public class GlutaoAnao extends Anao implements Montado{
                    
         //Libera a montaria quando esse morre
         if (this.energia <= 0 && this.porco != null) {
-            System.out.println(this.getNome() + " morreu! Montaria " + porco.getNome() + " liberada.");
             lado1.addLast(this.porco);
             this.porco = null;
         }

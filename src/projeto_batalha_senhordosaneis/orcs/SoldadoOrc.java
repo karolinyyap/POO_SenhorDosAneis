@@ -34,7 +34,6 @@ public class SoldadoOrc extends Orc implements Montado {
         
         if (pragaDosPorcos){
             this.energia -= nivelPraga * 5;
-            System.out.println("Praga de " + this.getNome() + " nível: " + nivelPraga);
         }
         
         lado2.getFirst().receberDano(ataque, lado1, lado2);
@@ -57,7 +56,6 @@ public class SoldadoOrc extends Orc implements Montado {
         this.energia -= dano;
            
         if (this.energia <= 0 && this.warg != null && this.warg.getEnergia() > 0) {
-            System.out.println(this.getNome() + " morreu! Montaria " + warg.getNome() + " liberada.");
             lado1.addLast(this.warg);
             this.warg = null;
         }

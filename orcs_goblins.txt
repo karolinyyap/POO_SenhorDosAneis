@@ -2,15 +2,15 @@
 1 Fak 24 75
 3 Full 23 77 Sim
 1 Merc 55 80
-5 War 88 70
 4 ComeCome 200 200 Não
+3 Ulrok 45 130 Sim
 6 Raguk 150 180
 3 Drog 40 120 Não
-4 Morgash 170 190 Sim
 2 Grishnak 300 250
 1 Zik 29 60
-3 Ulrok 45 130 Sim
+5 War 88 70
 5 Fang 100 100
 1 Kruk 31 72
 3 Zhar 50 140 Não
 6 Thrakk 130 160
+4 Morgash 170 190 Sim

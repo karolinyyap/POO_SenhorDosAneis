@@ -35,7 +35,6 @@ public class ReiGoblin extends Goblin{
         //Se tiver praga dos porcos, retira cinco de energia conforme o nível da praga
         if (pragaDosPorcos){
             ataque -= nivelPraga * 5;
-            System.out.println("Praga de " + this.getNome() + " nível: " + nivelPraga);
         }
         
         //Realizando seu ataque
@@ -59,7 +58,6 @@ public class ReiGoblin extends Goblin{
                 goblin.setEnergia(50);
                 lado1.addLast(goblin);
                 goblin.pragaDosPorcos(false);
-                System.out.println("Goblin ressuscitado");
                 it.remove();
             }
         }

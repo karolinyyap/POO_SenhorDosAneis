@@ -50,7 +50,6 @@ public class ImperadorAnao extends Anao implements Montado {
         }
 
         if (lado1.getFirst().getEnergia() <= 0) {
-            System.out.println(lado1.getFirst().getNome() + " foi derrotado pelo Imperador " + this.getNome() + "!");
             lado1.removeFirst();
         }
     }
@@ -62,7 +61,6 @@ public class ImperadorAnao extends Anao implements Montado {
         
         //Libera a montaria quando esse morre
         if (this.energia <= 0 && this.porco != null) {
-            System.out.println(this.getNome() + " morreu! Montaria " + porco.getNome() + " liberada.");
             lado1.addLast(this.porco);
             this.porco = null;
         }

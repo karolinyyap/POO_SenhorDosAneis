@@ -23,6 +23,12 @@ public class LeituraArquivo {
         double total = 0;
         for (Guerreiro guerreiro : lista) {
             total += guerreiro.getPeso();
+            if (guerreiro instanceof Montado) {
+                Montado g = (Montado) guerreiro;
+                if (g.getMontaria() != null) {
+                    total += g.getMontaria().getPeso();
+                }
+            }
         }
         return total;
     }
@@ -46,7 +52,7 @@ public class LeituraArquivo {
         return maisVelho;
 }
 
-    
+    //é estático porque nao precisa criar um objeto pra ele
     public static LinkedList<Guerreiro> lerGoblinsOrcs() {
         orcs_goblinsList.clear();
         try {

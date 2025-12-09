@@ -27,7 +27,6 @@ public class ComumGoblin extends Goblin{
         //Se tiver praga dos porcos, retira cinco de energia conforme o nível da praga
         if (pragaDosPorcos){
             this.energia -= nivelPraga * 5;
-            System.out.println("Praga de " + this.getNome() + " nível: " + nivelPraga);
         }
         
         //Realizando seu ataque

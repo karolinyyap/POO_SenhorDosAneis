@@ -24,7 +24,6 @@ public class WargOrc extends Orc{
         //Se tiver praga dos porcos, retira cinco de energia conforme o nível da praga
         if (pragaDosPorcos){
             this.energia -= nivelPraga * 5;
-            System.out.println("Praga de " + this.getNome() + " nível: " + nivelPraga);
         }
         
         int meuIndice = lado1.indexOf(this);
@@ -35,7 +34,6 @@ public class WargOrc extends Orc{
             Guerreiro guerreiro = lado1.get(i);
             if (guerreiro instanceof WargOrc) {
                 bonus += 5;
-                System.out.println("Ataque do warg somado!");
             } else {
                 break; 
             }

@@ -48,7 +48,6 @@ public class SuperiorElfo extends Elfo implements Montado{
         if (this.cavalo != null && this.cavalo.getEnergia() > 0) {
             this.cavalo.receberDano(dano, lado1, lado2);
             if (this.cavalo.getEnergia() <= 0) {
-                System.out.println(cavalo.getNome() + " cavalo montaria morreu");
                 this.cavalo = null;
             }
         } else {

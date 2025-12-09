@@ -2,7 +2,6 @@ package projeto_batalha_senhordosaneis;
 
 import java.util.LinkedList;
 import java.util.Random;
-//comentar código
 
 public class ProjetoBatalhaSenhorDosAneis {
 
@@ -38,7 +37,7 @@ public class ProjetoBatalhaSenhorDosAneis {
         Guerreiro ultimoMorto = null;
 
         while (!lado1.isEmpty() && !lado2.isEmpty()) {
-            System.out.println("\n--- Rodada " + rodada + " ---");
+            //System.out.println("\n--- Rodada " + rodada + " ---");
             rodada++;
 
             //Sorteia aleatoriamente o lado que vai atacar
@@ -54,10 +53,6 @@ public class ProjetoBatalhaSenhorDosAneis {
             }
 
             //Ataque
-            System.out.println(ataque.getNome() + " esta atacando " + defesa.getNome() + "!");
-            //System.out.println("Energia antes do ataque:");
-            //System.out.println(" - " + ataque.getNome() + ": " + ataque.getEnergia());
-            //System.out.println(" - " + defesa.getNome() + ": " + defesa.getEnergia());
 
             //Se estiver vivo, ataca
             if (ataque.estaVivo()) {
@@ -80,21 +75,14 @@ public class ProjetoBatalhaSenhorDosAneis {
                 //E continua
                 continue;
             }
-            //System.out.println("Energia depois do ataque:");
-            //System.out.println(" - " + ataque.getNome() + ": " + ataque.getEnergia());
-            //System.out.println(" - " + defesa.getNome() + ": " + defesa.getEnergia());
 
             //Se a defesa não estiver viva, printa
             if (!defesa.estaVivo()) {
-                System.out.println(defesa.getNome() + " foi derrotado!");
+                //System.out.println(defesa.getNome() + " foi derrotado!");
             
             //Se estiver faz o contra-ataque
             } else {
                 // Contra-ataque
-                System.out.println(defesa.getNome() + " esta atacando " + ataque.getNome() + "!");
-                //System.out.println("Energia antes do ataque:");
-                //System.out.println(" - " + ataque.getNome() + ": " + ataque.getEnergia());
-                //System.out.println(" - " + defesa.getNome() + ": " + defesa.getEnergia());
 
                 //Se defesa estiver viva
                 if (defesa.estaVivo()) {
@@ -107,7 +95,6 @@ public class ProjetoBatalhaSenhorDosAneis {
                         }
                     //Se não estiver tonta
                     } else {
-                        System.out.println(defesa.getNome() + " está tonto e não consegue reagir!");
                         defesa.setTonto(false);
                     }
                 //Ele não está vivo
@@ -120,13 +107,6 @@ public class ProjetoBatalhaSenhorDosAneis {
                     continue;
                 }
 
-                //System.out.println("Energia depois do ataque:");
-                //System.out.println(" - " + ataque.getNome() + ": " + ataque.getEnergia());
-                //System.out.println(" - " + defesa.getNome() + ": " + defesa.getEnergia());
-
-                if (!ataque.estaVivo()) {
-                    System.out.println(ataque.getNome() + " foi derrotado!");
-                }
             }
             
             //Caso os dois fiquem vivos

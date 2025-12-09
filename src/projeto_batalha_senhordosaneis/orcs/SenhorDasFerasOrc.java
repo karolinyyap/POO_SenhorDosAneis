@@ -25,7 +25,6 @@ public class SenhorDasFerasOrc extends Orc{
         //Se tiver praga dos porcos, retira cinco de energia conforme o nível da praga
         if (pragaDosPorcos){
             this.energia -= nivelPraga * 5;
-            System.out.println("Praga de " + this.getNome() + " nível: " + nivelPraga);
         }
         
         lado2.getFirst().receberDano(ataque, lado1, lado2);
@@ -49,6 +48,5 @@ public class SenhorDasFerasOrc extends Orc{
         WargOrc warg = new WargOrc("Warg Legiao", this.getIdade(), this.getPeso());
         lado1.addLast(warg);
         
-        System.out.println("Senhor das Feras criou um Warg, adicionado ao final da fila!");
     }
 }
